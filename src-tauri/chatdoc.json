@@ -1,0 +1,4 @@
+{
+    "update_sites": ["http://localhost:8080/chatdoc_sites.txt"],
+    "sites": ["https://chatdoc1.site"]
+}

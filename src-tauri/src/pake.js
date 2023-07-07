@@ -395,4 +395,3 @@ function pakeToast(msg) {
 		}, d * 1000);
 	}, 2500);
 }
-

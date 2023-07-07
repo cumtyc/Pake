@@ -28,6 +28,8 @@ use wry::webview::WebContext;
 
 use dirs::download_dir;
 use std::path::PathBuf;
+mod chatdoc;
+use chatdoc::get_avaliable_site;
 
 enum UserEvent {
     DownloadStarted(String, String),
@@ -90,7 +92,7 @@ fn main() -> wry::Result<()> {
         fullscreen,
         ..
     } = get_windows_config().1.unwrap_or_default();
-
+    let url = get_avaliable_site();
     let event_loop: EventLoop<UserEvent> = EventLoop::with_user_event();
     let proxy = event_loop.create_proxy();
     let common_window = WindowBuilder::new()
@@ -165,6 +167,7 @@ fn main() -> wry::Result<()> {
             let _ = proxy.send_event(UserEvent::DownloadComplete(path, success));
         }
     };
+
 
     #[cfg(target_os = "macos")]
     let webview = {
